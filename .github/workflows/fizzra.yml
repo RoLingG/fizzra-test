@@ -1,0 +1,30 @@
+name: Fizzra
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  scan:
+    name: Code quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.26.0'
+          cache: true
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - uses: RoLingG/fizzra@v0.1.0
+        with:
+          fail-on: critical
