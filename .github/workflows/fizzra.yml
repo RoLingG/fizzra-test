@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: '22'
 
-      - uses: RoLingG/fizzra@v0.1.3
+      - uses: RoLingG/fizzra@v0.1.4
         with:
+          fail-on: critical
           extra-formats: json,html,sarif 
